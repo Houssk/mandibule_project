@@ -2,8 +2,6 @@
  * @author Houssam KARARCH
  * affichageMandibuleV2() à modifier problème du nom de la mesh
 */
-
-
  function affichageMandibuleV2(){
 
            var manager = new THREE.LoadingManager();
@@ -46,9 +44,8 @@
  /**
   * @author Houssam KARRACH
   * @param URl des differents objets  dans le dossier img
+  * @description : affichage des différentes parties de la mandibule
   */
-
-
     function affichageMandibule(){
     var manager = new THREE.LoadingManager();
                 manager.onProgress = function ( item, loaded, total ) {
@@ -67,7 +64,19 @@
                 
     controls =  new THREE.OrbitControls( camera , renderer.domElement); 
     var loader = new THREE.OBJLoader(manager);
-    
+     loader.load("img/mandible_0.obj", function(object){       
+        object.traverse( function (child) {
+            if( child instanceof THREE.Mesh){                  
+                geometry = new THREE.Geometry().fromBufferGeometry(child.geometry);
+                 var mesh1 = new THREE.Mesh(geometry, child.material );
+                 mesh1.name = 0;
+                 mesh1.rotation.set(-0.64,0,-0.7);                          
+                 objects.push(mesh1);
+                 groupe.add(mesh1);
+                 scene.add(mesh1);
+            }       
+         })         
+        }) 
     loader.load("img/mandible_1.obj", function(object){       
         object.traverse( function (child) {
             if( child instanceof THREE.Mesh){                  
@@ -276,4 +285,28 @@
             }       
          })         
         }) 
+        loader.load("img/mandible_17.obj", function(object){       
+        object.traverse( function (child) {
+            if( child instanceof THREE.Mesh){                  
+                geometry = new THREE.Geometry().fromBufferGeometry(child.geometry);
+                 var mesh1 = new THREE.Mesh(geometry, child.material );
+                 mesh1.name = 17;
+                 mesh1.rotation.set(-0.64,0,-0.7);                          
+                 objects.push(mesh1);
+                 groupe.add(mesh1);
+                 scene.add(mesh1);
+            }       
+         })         
+        }) 
+}
+/**
+ * @description: Fonction qui permet de récupérer le début et la fin de la mandibule
+ * @return max and min array
+ */
+function mandibuleMaxMin(){
+   var array =[];
+   var max = sessionStorage.getItem("max_of_array");
+   var min = sessionStorage.getItem("min_of_array");
+   array = [max,min];
+   return array;
 }

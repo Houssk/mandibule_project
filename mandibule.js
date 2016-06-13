@@ -24,7 +24,7 @@ var selectionner = false;
 function init() { 
     renderer = new THREE.WebGLRenderer({antialias: true});
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(400, 400);
     document.body.appendChild(renderer.domElement);
     scene = new THREE.Scene();
     var ambient = new THREE.AmbientLight(0x404040,0.7);
@@ -47,8 +47,10 @@ function init() {
  */
 function onMouseMove( event ) {
  
-	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;	
+	mouse.x = ( (event.clientX-renderer.domElement.offsetLeft) / renderer.domElement.width ) * 2 - 1;
+	mouse.y = - ( (event.clientY-renderer.domElement.offsetTop ) / renderer.domElement.height ) * 2 + 1;	
+    console.log("mouse.x , mouse.y ",mouse.x,mouse.y);
+    console.log("event.clientX , event.clientY",event.clientX,event.clientY);
     raycaster.setFromCamera( mouse, camera );
     var intersections = raycaster.intersectObjects( objects );
 	if ( intersections.length > 0 ) {

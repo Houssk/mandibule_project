@@ -64,19 +64,7 @@
                 
     controls =  new THREE.OrbitControls( camera , renderer.domElement); 
     var loader = new THREE.OBJLoader(manager);
-     loader.load("img/mandible_0.obj", function(object){       
-        object.traverse( function (child) {
-            if( child instanceof THREE.Mesh){                  
-                geometry = new THREE.Geometry().fromBufferGeometry(child.geometry);
-                 var mesh1 = new THREE.Mesh(geometry, child.material );
-                 mesh1.name = 0;
-                 mesh1.rotation.set(-0.64,0,-0.7);                          
-                 objects.push(mesh1);
-                 groupe.add(mesh1);
-                 scene.add(mesh1);
-            }       
-         })         
-        }) 
+    
     loader.load("img/mandible_1.obj", function(object){       
         object.traverse( function (child) {
             if( child instanceof THREE.Mesh){                  
@@ -291,6 +279,123 @@
                 geometry = new THREE.Geometry().fromBufferGeometry(child.geometry);
                  var mesh1 = new THREE.Mesh(geometry, child.material );
                  mesh1.name = 17;
+                 mesh1.rotation.set(-0.64,0,-0.7);                          
+                 objects.push(mesh1);
+                 groupe.add(mesh1);
+                 scene.add(mesh1);
+            }       
+         })         
+        }) 
+         loader.load("img/mandible_18.obj", function(object){       
+        object.traverse( function (child) {
+            if( child instanceof THREE.Mesh){                  
+                geometry = new THREE.Geometry().fromBufferGeometry(child.geometry);
+                 var mesh1 = new THREE.Mesh(geometry, child.material );
+                 mesh1.name = 18;
+                 mesh1.rotation.set(-0.64,0,-0.7);                          
+                 objects.push(mesh1);
+                 groupe.add(mesh1);
+                 scene.add(mesh1);
+            }       
+         })         
+        }) 
+         loader.load("img/mandible_19.obj", function(object){       
+        object.traverse( function (child) {
+            if( child instanceof THREE.Mesh){                  
+                geometry = new THREE.Geometry().fromBufferGeometry(child.geometry);
+                 var mesh1 = new THREE.Mesh(geometry, child.material );
+                 mesh1.name = 19;
+                 mesh1.rotation.set(-0.64,0,-0.7);                          
+                 objects.push(mesh1);
+                 groupe.add(mesh1);
+                 scene.add(mesh1);
+            }       
+         })         
+        }) 
+         loader.load("img/mandible_20.obj", function(object){       
+        object.traverse( function (child) {
+            if( child instanceof THREE.Mesh){                  
+                geometry = new THREE.Geometry().fromBufferGeometry(child.geometry);
+                 var mesh1 = new THREE.Mesh(geometry, child.material );
+                 mesh1.name = 20;
+                 mesh1.rotation.set(-0.64,0,-0.7);                          
+                 objects.push(mesh1);
+                 groupe.add(mesh1);
+                 scene.add(mesh1);
+            }       
+         })         
+        }) 
+         loader.load("img/mandible_21.obj", function(object){       
+        object.traverse( function (child) {
+            if( child instanceof THREE.Mesh){                  
+                geometry = new THREE.Geometry().fromBufferGeometry(child.geometry);
+                 var mesh1 = new THREE.Mesh(geometry, child.material );
+                 mesh1.name = 21;
+                 mesh1.rotation.set(-0.64,0,-0.7);                          
+                 objects.push(mesh1);
+                 groupe.add(mesh1);
+                 scene.add(mesh1);
+            }       
+         })         
+        }) 
+        loader.load("img/mandible_22.obj", function(object){       
+        object.traverse( function (child) {
+            if( child instanceof THREE.Mesh){                  
+                geometry = new THREE.Geometry().fromBufferGeometry(child.geometry);
+                 var mesh1 = new THREE.Mesh(geometry, child.material );
+                 mesh1.name = 22;
+                 mesh1.rotation.set(-0.64,0,-0.7);                          
+                 objects.push(mesh1);
+                 groupe.add(mesh1);
+                 scene.add(mesh1);
+            }       
+         })         
+        }) 
+        loader.load("img/mandible_23.obj", function(object){       
+        object.traverse( function (child) {
+            if( child instanceof THREE.Mesh){                  
+                geometry = new THREE.Geometry().fromBufferGeometry(child.geometry);
+                 var mesh1 = new THREE.Mesh(geometry, child.material );
+                 mesh1.name = 23;
+                 mesh1.rotation.set(-0.64,0,-0.7);                          
+                 objects.push(mesh1);
+                 groupe.add(mesh1);
+                 scene.add(mesh1);
+            }       
+         })         
+        }) 
+        loader.load("img/mandible_24.obj", function(object){       
+        object.traverse( function (child) {
+            if( child instanceof THREE.Mesh){                  
+                geometry = new THREE.Geometry().fromBufferGeometry(child.geometry);
+                 var mesh1 = new THREE.Mesh(geometry, child.material );
+                 mesh1.name = 24;
+                 mesh1.rotation.set(-0.64,0,-0.7);                          
+                 objects.push(mesh1);
+                 groupe.add(mesh1);
+                 scene.add(mesh1);
+            }       
+         })         
+        }) 
+        loader.load("img/mandible_25.obj", function(object){       
+        object.traverse( function (child) {
+            if( child instanceof THREE.Mesh){                  
+                geometry = new THREE.Geometry().fromBufferGeometry(child.geometry);
+                 var mesh1 = new THREE.Mesh(geometry, child.material );
+                 mesh1.name = 25;
+                 mesh1.rotation.set(-0.64,0,-0.7);                          
+                 objects.push(mesh1);
+                 groupe.add(mesh1);
+                 scene.add(mesh1);
+            }       
+         })         
+        }) 
+         loader.load("img/mandible_26.obj", function(object){       
+        object.traverse( function (child) {
+            if( child instanceof THREE.Mesh){                  
+                geometry = new THREE.Geometry().fromBufferGeometry(child.geometry);
+                 var mesh1 = new THREE.Mesh(geometry, child.material );
+                 mesh1.name = 26;
                  mesh1.rotation.set(-0.64,0,-0.7);                          
                  objects.push(mesh1);
                  groupe.add(mesh1);

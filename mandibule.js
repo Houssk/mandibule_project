@@ -24,7 +24,7 @@ var selectionner = false;
 function init() { 
     renderer = new THREE.WebGLRenderer({antialias: true});
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(document.getElementById("mandibule").clientWidth, 400);
+    renderer.setSize(document.getElementById("mandibule").clientWidth, 600);
     document.getElementById("mandibule").appendChild(renderer.domElement);
     scene = new THREE.Scene();
     var ambient = new THREE.AmbientLight(0x404040,0.7);
@@ -33,7 +33,7 @@ function init() {
     hemiLight.color.set(0xd3d3d3);
 	hemiLight.groundColor.setHSL( 0, 0, 0 );
 	scene.add( hemiLight );
-    camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, 20000 );
+    camera = new THREE.PerspectiveCamera( 60, document.getElementById("mandibule").clientWidth /600, 1, 20000 );
         camera.position.z = 100;
         camera.position.y = 0;
         camera.position.x = 0;
@@ -92,7 +92,7 @@ function onMouseMove( event ) {
                     objects[i].material.color.setHex( 0xffffff );        
                    }                    
          }
-        console.log(mandibuleMaxMin);
+        console.log(mandibuleMaxMin());
        while(number_mandibule.length>0) number_mandibule.pop();
         }
     }

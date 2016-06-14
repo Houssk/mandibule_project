@@ -24,8 +24,8 @@ var selectionner = false;
 function init() { 
     renderer = new THREE.WebGLRenderer({antialias: true});
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(400, 400);
-    document.body.appendChild(renderer.domElement);
+    renderer.setSize(document.getElementById("mandibule").clientWidth, 400);
+    document.getElementById("mandibule").appendChild(renderer.domElement);
     scene = new THREE.Scene();
     var ambient = new THREE.AmbientLight(0x404040,0.7);
     scene.add(ambient);    
@@ -39,18 +39,21 @@ function init() {
         camera.position.x = 0;
         scene.add(camera);   
         affichageMandibule();  
-     window.addEventListener('resize', onWindowResize, false);  
+    // window.addEventListener('resize', onWindowResize, false);  
      window.addEventListener( 'click', onMouseMove, false );
 }
 /**
  * @description: permet de gérer les evenements de la souris
  */
 function onMouseMove( event ) {
- 
-	mouse.x = ( (event.clientX-renderer.domElement.offsetLeft) / renderer.domElement.width ) * 2 - 1;
-	mouse.y = - ( (event.clientY-renderer.domElement.offsetTop ) / renderer.domElement.height ) * 2 + 1;	
+    
+    var mandibule =  $("#mandibule");
+    console.log('mandibule.left,mandibule.top',mandibule.offset().left,mandibule.offset().top);
+	mouse.x = ( (event.clientX - mandibule.offset().left) / mandibule.width() ) * 2 - 1;
+	mouse.y = - ( (event.clientY- mandibule.offset().top ) / mandibule.height()) * 2 + 1;	
     console.log("mouse.x , mouse.y ",mouse.x,mouse.y);
     console.log("event.clientX , event.clientY",event.clientX,event.clientY);
+    console.log("renderer.domElement.width,renderer.domElement.height ",renderer.domElement.width,renderer.domElement.height );
     raycaster.setFromCamera( mouse, camera );
     var intersections = raycaster.intersectObjects( objects );
 	if ( intersections.length > 0 ) {

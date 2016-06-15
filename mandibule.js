@@ -24,6 +24,11 @@ var selectionner = false;
 function init() { 
     renderer = new THREE.WebGLRenderer({antialias: true});
     renderer.setPixelRatio(window.devicePixelRatio);
+    /**
+     * Remplacer renderer.setSize(x, y);
+     *  x : width
+     *  y : height
+     */
     renderer.setSize(document.getElementById("mandibule").clientWidth, 600);
     document.getElementById("mandibule").appendChild(renderer.domElement);
     scene = new THREE.Scene();
@@ -33,6 +38,12 @@ function init() {
     hemiLight.color.set(0xd3d3d3);
 	hemiLight.groundColor.setHSL( 0, 0, 0 );
 	scene.add( hemiLight );
+    /**
+     * Remplacer PerspectiveCamera( 60, document.getElementById("mandibule").clientWidth /600, 1, 20000 )
+     *  PerspectiveCamera( 60, x/y, 1, 20000 )
+     *  x : width
+     *  y : height
+     */
     camera = new THREE.PerspectiveCamera( 60, document.getElementById("mandibule").clientWidth /600, 1, 20000 );
         camera.position.z = 100;
         camera.position.y = 0;
@@ -48,12 +59,12 @@ function init() {
 function onMouseMove( event ) {
     
     var mandibule =  $("#mandibule");
-    console.log('mandibule.left,mandibule.top',mandibule.offset().left,mandibule.offset().top);
+   // console.log('mandibule.left,mandibule.top',mandibule.offset().left,mandibule.offset().top);
 	mouse.x = ( (event.clientX - mandibule.offset().left) / mandibule.width() ) * 2 - 1;
 	mouse.y = - ( (event.clientY- mandibule.offset().top ) / mandibule.height()) * 2 + 1;	
-    console.log("mouse.x , mouse.y ",mouse.x,mouse.y);
+/*    console.log("mouse.x , mouse.y ",mouse.x,mouse.y);
     console.log("event.clientX , event.clientY",event.clientX,event.clientY);
-    console.log("renderer.domElement.width,renderer.domElement.height ",renderer.domElement.width,renderer.domElement.height );
+    console.log("renderer.domElement.width,renderer.domElement.height ",renderer.domElement.width,renderer.domElement.height );*/
     raycaster.setFromCamera( mouse, camera );
     var intersections = raycaster.intersectObjects( objects );
 	if ( intersections.length > 0 ) {
@@ -92,7 +103,7 @@ function onMouseMove( event ) {
                     objects[i].material.color.setHex( 0xffffff );        
                    }                    
          }
-        console.log(mandibuleMaxMin());
+        //console.log(mandibuleMaxMin());
        while(number_mandibule.length>0) number_mandibule.pop();
         }
     }

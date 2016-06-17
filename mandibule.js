@@ -18,19 +18,27 @@ var baseColor = 0xFFFFFF;
 var foundColor = 0x12C0E3;
 var selectionner = false;
 /**
+     * Remplacer ;
+     *  width_div : width du div mandibule
+     *  height_div  : height du div mandibule
+     */
+var width_div = document.getElementById("mandibule").clientWidth;
+var height_div = 600;
+/**
  * @function : permet l'initialisation de la scène et le chargement de l'image
  * @description : utilisation de la fonction affichageMandibule() pour  l'affichage de 16 objets de la mandibules
  */
 function init() { 
-    renderer = new THREE.WebGLRenderer({antialias: true});
-    renderer.setPixelRatio(window.devicePixelRatio);
     /**
-     * Remplacer renderer.setSize(x, y);
-     *  x : width
-     *  y : height
+     * Initialisation du render 
      */
-    renderer.setSize(document.getElementById("mandibule").clientWidth, 600);
+    renderer = new THREE.WebGLRenderer({antialias: true});
+    renderer.setPixelRatio(window.devicePixelRatio);  
+    renderer.setSize(width_div, height_div);
     document.getElementById("mandibule").appendChild(renderer.domElement);
+   /**
+    * Initialisation de la scene
+    */
     scene = new THREE.Scene();
     var ambient = new THREE.AmbientLight(0x404040,0.7);
     scene.add(ambient);    
@@ -38,18 +46,16 @@ function init() {
     hemiLight.color.set(0xd3d3d3);
 	hemiLight.groundColor.setHSL( 0, 0, 0 );
 	scene.add( hemiLight );
-    /**
-     * Remplacer PerspectiveCamera( 60, document.getElementById("mandibule").clientWidth /600, 1, 20000 )
-     *  PerspectiveCamera( 60, x/y, 1, 20000 )
-     *  x : width
-     *  y : height
-     */
-    camera = new THREE.PerspectiveCamera( 60, document.getElementById("mandibule").clientWidth /600, 1, 20000 );
+   /**
+    * Initialisation du camera
+    */
+    camera = new THREE.PerspectiveCamera( 60, width_div / height_div, 1, 20000 );
         camera.position.z = 100;
         camera.position.y = 0;
         camera.position.x = 0;
         scene.add(camera);   
         affichageMandibule();  
+
     // window.addEventListener('resize', onWindowResize, false);  
      window.addEventListener( 'click', onMouseMove, false );
 }
@@ -62,7 +68,7 @@ function onMouseMove( event ) {
    // console.log('mandibule.left,mandibule.top',mandibule.offset().left,mandibule.offset().top);
 	mouse.x = ( (event.clientX - mandibule.offset().left) / mandibule.width() ) * 2 - 1;
 	mouse.y = - ( (event.clientY- mandibule.offset().top ) / mandibule.height()) * 2 + 1;	
-/*    console.log("mouse.x , mouse.y ",mouse.x,mouse.y);
+/*  console.log("mouse.x , mouse.y ",mouse.x,mouse.y);
     console.log("event.clientX , event.clientY",event.clientX,event.clientY);
     console.log("renderer.domElement.width,renderer.domElement.height ",renderer.domElement.width,renderer.domElement.height );*/
     raycaster.setFromCamera( mouse, camera );

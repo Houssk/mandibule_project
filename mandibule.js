@@ -29,6 +29,12 @@ var height_div = 600;
  * @description : utilisation de la fonction affichageMandibule() pour  l'affichage de 16 objets de la mandibules
  */
 function init() { 
+
+    /**
+     * delete cookies
+     */
+     deleteAllCookies();
+    
     /**
      * Initialisation du render 
      */

@@ -67,9 +67,13 @@ function init() {
 /**
  * @description : permet de boucler infinement la scene 
  */
-var array =  mandibuleMaxMin();
-        var max = array[0];
-        var min = array[1];
+function onWindowResize() {
+		    windowHalfX = width_div / 2;
+		    windowHalfY = height_div/ 2;
+		    camera.aspect = width_div / height_div;
+		    camera.updateProjectionMatrix();
+		    renderer.setSize(width_div, height_div);
+		}
 
 function render(){
     controls.update();

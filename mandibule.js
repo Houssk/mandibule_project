@@ -35,6 +35,7 @@ function init() {
     renderer = new THREE.WebGLRenderer({antialias: true});
     renderer.setPixelRatio(window.devicePixelRatio);  
     renderer.setSize(width_div, height_div);
+    renderer.setClearColor(0x424243);
     document.getElementById("mandibule").appendChild(renderer.domElement);
    /**
     * Initialisation de la scene
@@ -56,7 +57,7 @@ function init() {
         scene.add(camera);   
         affichageMandibule();  
 
-    // window.addEventListener('resize', onWindowResize, false);  
+     window.addEventListener('resize', onWindowResize, false);  
      window.addEventListener( 'click', onMouseMove, false );
 }
 /**
@@ -95,8 +96,10 @@ function onMouseMove( event ) {
          var max_of_array = Math.max.apply(Math, number_mandibule);
          var min_of_array = Math.min.apply(Math, number_mandibule); 
          //console.log("min_of_array",min_of_array,"max_of_array",max_of_array) ; 
-         sessionStorage.setItem("min_of_array",min_of_array);
-         sessionStorage.setItem("max_of_array",max_of_array);  
+         createCookie("min_of_array",min_of_array,1);
+         createCookie("max_of_array",max_of_array,1);
+         //sessionStorage.setItem("min_of_array",min_of_array);
+         // sessionStorage.setItem("max_of_array",max_of_array);  
          var min = min_of_array-1;
          var max = max_of_array-1; 
         // console.log("min",min,"max",max) ; 
@@ -117,11 +120,11 @@ function onMouseMove( event ) {
  * @description : permet de reduire la taille de l'objet en fonction de la taille de l'ecran
  */
 function onWindowResize() {
-		    windowHalfX = window.innerWidth / 2;
-		    windowHalfY = window.innerHeight / 2;
-		    camera.aspect = window.innerWidth / window.innerHeight;
+		    windowHalfX = width_div / 2;
+		    windowHalfY = height_div/ 2;
+		    camera.aspect = width_div / height_div;
 		    camera.updateProjectionMatrix();
-		    renderer.setSize(window.innerWidth, window.innerHeight);
+		    renderer.setSize(width_div, height_div);
 		}
 /**
  * @description : permet de boucler infinement la scene 

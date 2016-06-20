@@ -3,7 +3,6 @@
  * affichageMandibuleV2() à modifier problème du nom de la mesh
 */
  function affichageMandibuleV2(){
-
            var array = mandibuleMaxMin();
            var max = array[0];
            var min = array[1];
@@ -30,25 +29,37 @@
                          
                         geometry = new THREE.Geometry().fromBufferGeometry(child.geometry);
                         mesh = new THREE.Mesh(geometry, child.material );                    
-                        console.log("i , max , min" ,compteur , max , min);
-                       
+                        console.log("compteur , max , min" ,compteur , max , min);                    
                         mesh.rotation.set(0.7,0.1,-1.46);
                         objects.push(mesh);
-                        if( compteur < min && compteur >max ){                        
-                            objects[compteur-1].material.color.setHex( 0xf98658 );
-                            console.log("compteur",compteur);
+                        scene.add(mesh);
+                      }
+                   
+                    })
+                     console.log('objects',objects);
+                     
+                        if( compteur >= min && compteur <=max )  { 
+                            
+                             objects[compteur-1].material.color.setHex( 0xf98658 );
+                             console.log("compteur",compteur);
+
                         }
-                        else if( compteur >= min && compteur <=max ) {
-                            objects[compteur-1].material.color.setHex( 0xFF0000);
+                        else if(  compteur > max  ) {
+
+                             objects[compteur-1].material.color.setHex( 0xFFffff);
+                             console.log("non compteur",compteur);
+
+                        }
+                        else if (compteur < min){
+
+                             objects[compteur-1].material.color.setHex( 0xFFffff);
                              console.log("non compteur",compteur);
                         }
                         compteur++;
-                        scene.add(mesh);
-                    }
-                    })
-                })
-            }
-        }
+                 })
+              }
+               
+          }
  /**
   * @author Houssam KARRACH
   * @param URl des differents objets  dans le dossier img
@@ -422,4 +433,15 @@ function mandibuleMaxMin(){
    var min = sessionStorage.getItem("min_of_array");
    array = [max,min];
    return array;
+}
+
+
+function createCookie(name,value,days) {
+	if (days) {
+		var date = new Date();
+		date.setTime(date.getTime()+(days*24*60*60*1000));
+		var expires = "; expires="+date.toGMTString();
+	}
+	else var expires = "";
+	document.cookie = name+"="+value+expires+"; path=/";
 }

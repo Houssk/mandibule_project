@@ -81,7 +81,9 @@
     var onError = function ( xhr ) {
                 };
 
-    controls =  new THREE.OrbitControls( camera , renderer.domElement);
+    controls =  new THREE.OrbitControls( camera , renderer.domElement); 
+     // to disable zoom
+    controls.enableZoom = false;
     var loader = new THREE.OBJLoader(manager);
 
     loader.load("img/mandible_1.obj", function(object){
@@ -445,6 +447,7 @@
                 };
 
     controls_perone =  new THREE.OrbitControls( camera_perone , renderer_perone.domElement);
+    controls_perone.enableZoom = false;
     var loader_perone = new THREE.OBJLoader(manager);
 
     loader_perone.load("img/perone_1.obj", function(object){
